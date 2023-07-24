@@ -32,16 +32,20 @@ export const selectCar = async (event: Event) => {
 
 export const fillUpdateCarForm = (car: Car) => {
     const carName = document.querySelector('#update-name') as HTMLInputElement;
+    carName.disabled = false;
     carName.value = car.name;
     const carColor = document.querySelector('#update-color') as HTMLInputElement;
+    carColor.disabled = false;
     carColor.value = car.color;
     const updateButton = document.querySelector('#update-button') as HTMLInputElement;
+    updateButton.disabled = false;
     updateButton.addEventListener('click', changeCar);
 };
 
 export const changeCar = async () => {
     const carName = document.querySelector('#update-name') as HTMLInputElement;
     const carColor = document.querySelector('#update-color') as HTMLInputElement;
+    const updateButton = document.querySelector('#update-button') as HTMLInputElement;
     const car = {
         name: carName.value,
         color: carColor.value,
@@ -58,6 +62,9 @@ export const changeCar = async () => {
     carName.value = '';
     carColor.value = '#ffffff';
     localStorage.removeItem('update_id');
+    carName.disabled = true;
+    carColor.disabled = true;
+    updateButton.disabled = true;
 };
 
 export const addCar = async () => {
