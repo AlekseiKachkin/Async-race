@@ -5,6 +5,7 @@ import { renderControlButtons } from './renderControlButtons';
 import { carRender } from './carRender';
 export const garageRender = (data: Garage) => {
     const wrap = document.querySelector('.wrap') as HTMLElement;
+    wrap.innerHTML = '';
     createCarForm(wrap);
     updateCarForm(wrap);
     renderControlButtons(wrap);

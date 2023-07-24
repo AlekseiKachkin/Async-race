@@ -3,23 +3,23 @@ import { Car } from '../types/types';
 import { garageRender } from './garage';
 import { carRender } from './carRender';
 import { carContainer } from '../types/types';
-const baseURL = 'http://127.0.0.1:3000';
+import { Winners, Garage } from '../types/types';
+import { winnersRender } from './winners';
+export const baseURL = 'http://127.0.0.1:3000';
 
-enum Paths {
+export enum Paths {
     Garage = '/garage',
     Winners = '/winners',
 }
 
 export const getCars = async () => {
     const response = await fetch(`${baseURL}${Paths.Garage}`);
-    response.json().then((data) => garageRender(data));
+    response.json().then((data: Garage) => garageRender(data));
 };
 
 export const getWinners = async () => {
     const response = await fetch(`${baseURL}${Paths.Winners}`);
-    const data = response.json();
-    console.log(data);
-    return data;
+    response.json().then((data: Winners) => winnersRender(data));
 };
 
 export const selectCar = async (event: Event) => {
